@@ -76,14 +76,14 @@ FROM Aircrafts
 INNER JOIN Flights
 ON Aircrafts.AircraftId = Flights.AircraftId;
 
--- 6. Promedio de millas voladas por los clientes agrupados por estatus
+-- 6. Promedio de millas voladas por los clientes agrupados por estatus  **
 SELECT Status, ROUND(AVG(CustomerMilleage), 2) AS Promedio_Millas_Por_Cliente
 FROM Customers
 INNER JOIN Flights
 ON Customers.CustomerId = Flights.CustomerId
 GROUP BY Status;
 
--- 7. Numero maximo de millas voladas por los clientes agrupadas por estatus
+-- 7. Numero maximo de millas voladas por los clientes agrupadas por estatus **
 SELECT Status, MAX(CustomerMilleage) AS Maximo_Millas_Por_Cliente
 FROM Customers
 INNER JOIN Flights
@@ -107,14 +107,14 @@ SELECT Customers.Name, FlightNumber AS Numero_Vuelo, FlightMilleage as Millas_Vu
 FROM Flights inner join Customers on Flights.CustomerId = Customers.CustomerId
 WHERE FlightMilleage BETWEEN 200 AND 2000;
 
--- 10. Distancia promedio de vuelo reservada agrupada por estatus del cliente
+-- 10. Distancia promedio de vuelo reservada agrupada por estatus del cliente  **
 SELECT Customers.Status, ROUND(AVG(Flights.FlightMilleage), 2)
 FROM Customers
 INNER JOIN Flights
 ON Customers.CustomerId = Flights.CustomerId
 GROUP BY Customers.Status;
 
--- 11. Aeronave mas reservada por los miembros de estatus Gold
+-- 11. Aeronave mas reservada por los miembros de estatus Gold  **
 SELECT Customers.Status AS Estatus_Cliente, Aircrafts.AircraftName AS Aeronave, COUNT(*) as Vuelos_Totales
 FROM Customers
 INNER JOIN Flights ON Customers.CustomerId = Flights.CustomerId
